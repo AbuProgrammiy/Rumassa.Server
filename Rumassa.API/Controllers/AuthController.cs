@@ -135,6 +135,7 @@ namespace Rumassa.API.Controllers
             {
                 user = new User()
                 {
+                    Id = Guid.NewGuid(),
                     UserName = model.FirstName + model.LastName,
                     Name = model.FirstName,
                     Surname = model.LastName,
@@ -151,6 +152,8 @@ namespace Rumassa.API.Controllers
             var info = new UserLoginInfo(model.Provider, model.ProviderKey, user.UserName);
 
             await _userManager.AddLoginAsync(user, info);
+
+            await _signInManager.SignInAsync(user, false);
 
             var token = _authService.GenerateToken(user);
 
