@@ -10,5 +10,6 @@ namespace Rumassa.Application.UseCases.DiplomCases.Queries
 {
     public class GetAllDiplomsByIdQuery: IRequest<Diplom>
     {
+        public Guid Id { get; set; }
     }
 }
