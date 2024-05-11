@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\DiplomCases\Handlers\" />
     <Folder Include="UseCases\DiplomCases\Queries\" />
   </ItemGroup>
 
