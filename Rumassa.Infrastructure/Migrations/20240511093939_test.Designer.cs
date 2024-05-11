@@ -13,7 +13,7 @@ using Rumassa.Infrastructure.Persistance;
 namespace Rumassa.Infrastructure.Migrations
 {
     [DbContext(typeof(RumassaDbContext))]
-    [Migration("20240511070812_test")]
+    [Migration("20240511093939_test")]
     partial class test
     {
         /// <inheritdoc />
@@ -201,7 +201,6 @@ namespace Rumassa.Infrastructure.Migrations
                         .HasColumnType("character varying(256)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PasswordHash")
@@ -214,7 +213,6 @@ namespace Rumassa.Infrastructure.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("PhotoUrl")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Role")

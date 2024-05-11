@@ -198,7 +198,6 @@ namespace Rumassa.Infrastructure.Migrations
                         .HasColumnType("character varying(256)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PasswordHash")
@@ -211,7 +210,6 @@ namespace Rumassa.Infrastructure.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("PhotoUrl")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Role")
