@@ -19,8 +19,4 @@
 	<ProjectReference Include="..\Rumassa.Domain\Rumassa.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\DiplomCases\Queries\" />
-  </ItemGroup>
-
 </Project>
