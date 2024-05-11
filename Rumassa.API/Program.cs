@@ -51,6 +51,7 @@ namespace Rumassa.API
                 {
                     options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
                 });
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -115,6 +116,7 @@ namespace Rumassa.API
                         Name = "Admin",
                         Surname = "Admin",
                         Email = email,
+                        PhotoUrl = "https://ih1.redbubble.net/image.2955130987.9629/raf,360x360,075,t,fafafa:ca443f4786.jpg",
                         Password = password,
                         PhoneNumber = "+998777777777",
                         Role = "Admin"
