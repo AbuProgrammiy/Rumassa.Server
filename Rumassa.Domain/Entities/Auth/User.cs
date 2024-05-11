@@ -11,6 +11,7 @@ namespace Rumassa.Domain.Entities.Auth
     {
         public string Name { get; set; }
         public string Surname { get; set; }
+        public string PhotoUrl { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
         public bool IsDeleted { get; set; }
