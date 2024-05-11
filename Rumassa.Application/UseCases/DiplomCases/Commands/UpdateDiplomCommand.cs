@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Rumassa.Domain.Entities.DTOs;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.DiplomCases.Commands
 {
-    public class DeleteDiplomCommand: IRequest<ResponseModel>
+    public class UpdateDiplomCommand: IRequest<ResponseModel>
     {
-        public Guid Id {  get; set; }
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public FormFile PhotoPath { get; set; }
     }
 }
