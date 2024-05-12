@@ -25,7 +25,14 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
                 var photosFile = request.Photos;
                 string photoPath = Path.Combine(_webHostEnvironment.WebRootPath, request.Name);
                 string photoName = "";
-                List<string> photosPaths = new List<string>();
+                var product = new Product()
+                {
+                    Name = request.Name,
+                    Price = request.Price,
+                    CategoryId = request.CategoryId,
+                    OrderId = request.OrderId ?? null,
+                    NewsId = request.NewsId ?? null
+                };
 
                 try
                 {
@@ -38,14 +45,14 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
                     foreach (var photoFile in photosFile)
                     {
                         photoName = Guid.NewGuid().ToString() + Path.GetExtension(photoFile.FileName);
-                        photoPath = Path.Combine(_webHostEnvironment.ContentRootPath, request.Name, photoName);
+                        photoPath = Path.Combine(_webHostEnvironment.WebRootPath, request.Name, photoName);
 
-                        using (var stream = new FileStream(photoPath, FileMode.Create))
+                        using (var stream = new FileStream(photoPath, FileMode.CreateNew))
                         {
                             await photoFile.CopyToAsync(stream);
                         }
 
-                        photosPaths.Add(photoPath); // Add photo path to the list
+                        product.PhotoPaths.Add(photoPath); // Add photo path to the list
                     }
                 }
                 catch (Exception ex)
@@ -57,16 +64,6 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
                         IsSuccess = false
                     };
                 }
-
-                var product = new Product()
-                {
-                    Name = request.Name,
-                    Price = request.Price,
-                    PhotoPaths = photosPaths,
-                    CategoryId = request.CategoryId,
-                    OrderId = request.OrderId,
-                    NewsId = request.NewsId
-                };
 
                 await _context.Products.AddAsync(product, cancellationToken);
                 await _context.SaveChangesAsync(cancellationToken);

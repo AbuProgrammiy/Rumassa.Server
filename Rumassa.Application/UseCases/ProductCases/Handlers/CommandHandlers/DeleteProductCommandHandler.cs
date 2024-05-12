@@ -24,7 +24,7 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
 
             if (product != null)
             {
-                var filePath = Path.Combine(_webHostEnvironment.ContentRootPath, product.Name);
+                var filePath = Path.Combine(_webHostEnvironment.WebRootPath, product.Name);
 
                 if (File.Exists(filePath))
                 {
