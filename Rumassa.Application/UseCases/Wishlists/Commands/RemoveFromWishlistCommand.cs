@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace Rumassa.Application.UseCases.Wishlists.Commands
 {
-    public class CreateWishlistCommand : IRequest<ResponseModel>
+    public class RemoveFromWishlistCommand : IRequest<ResponseModel>
     {
         public Guid UserId { get; set; }
+        public Guid ProductId { get; set; }
     }
 }

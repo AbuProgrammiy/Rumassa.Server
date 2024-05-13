@@ -60,7 +60,7 @@ namespace Rumassa.API
             .ReadFrom.Configuration(builder.Configuration)
             .Enrich.FromLogContext()
             .CreateLogger();
-            builder.Logging.ClearProviders();
+            //builder.Logging.ClearProviders();
             builder.Logging.AddSerilog(logger);
             builder.Services.AddControllers();
 
@@ -73,12 +73,12 @@ namespace Rumassa.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
 
-            app.UseCors();
 
-            app.UseStaticFiles();
+            app.UseCors();
 
             app.UseAuthentication();
 
