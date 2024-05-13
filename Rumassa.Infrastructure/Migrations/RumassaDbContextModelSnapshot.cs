@@ -497,6 +497,9 @@ namespace Rumassa.Infrastructure.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("double precision");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -504,6 +507,8 @@ namespace Rumassa.Infrastructure.Migrations
                     b.HasIndex("NewsId");
 
                     b.HasIndex("OrderId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Products");
                 });
@@ -628,6 +633,10 @@ namespace Rumassa.Infrastructure.Migrations
                         .WithMany("Products")
                         .HasForeignKey("OrderId");
 
+                    b.HasOne("Rumassa.Domain.Entities.Auth.User", null)
+                        .WithMany("Wishlist")
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Category");
 
                     b.Navigation("News");
@@ -651,6 +660,8 @@ namespace Rumassa.Infrastructure.Migrations
                     b.Navigation("News");
 
                     b.Navigation("Orders");
+
+                    b.Navigation("Wishlist");
                 });
 
             modelBuilder.Entity("Rumassa.Domain.Entities.Category", b =>

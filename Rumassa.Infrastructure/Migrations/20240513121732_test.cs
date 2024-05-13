@@ -108,6 +108,19 @@ namespace Rumassa.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Diploms",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    PhotoPath = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Diploms", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -286,10 +299,10 @@ namespace Rumassa.Infrastructure.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Price = table.Column<double>(type: "double precision", nullable: false),
                     PhotoPaths = table.Column<List<string>>(type: "text[]", nullable: false),
-                    UserId = table.Column<Guid>(type: "uuid", nullable: true),
                     OrderId = table.Column<Guid>(type: "uuid", nullable: true),
                     NewsId = table.Column<Guid>(type: "uuid", nullable: true),
-                    CategoryId = table.Column<short>(type: "smallint", nullable: true)
+                    CategoryId = table.Column<short>(type: "smallint", nullable: true),
+                    UserId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -452,6 +465,9 @@ namespace Rumassa.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Deliveries");
+
+            migrationBuilder.DropTable(
+                name: "Diploms");
 
             migrationBuilder.DropTable(
                 name: "Reviews");
