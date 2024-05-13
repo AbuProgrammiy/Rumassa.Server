@@ -24,5 +24,18 @@ namespace Rumassa.API.Controllers
             return Ok(result);
         }
 
+        [HttpDelete]
+        public async Task<IActionResult> RemoveFromWishlist(RemoveFromWishlistCommand command)
+        {
+            var result = await mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetWishlist(GetAllFromWishlistsQuery query)
+        {
+            var result = await mediator.Send(query);
+            return Ok(result);
+        }
     }
 }
