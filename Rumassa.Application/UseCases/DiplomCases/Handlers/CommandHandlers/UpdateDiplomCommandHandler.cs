@@ -56,7 +56,7 @@ namespace Rumassa.Application.UseCases.DiplomCases.Handlers.CommandHandlers
                             await file.CopyToAsync(stream);
                         }
 
-                        diplom.PhotoPath = filePath;
+                        diplom.PhotoPath = "/DiplomPhotos/" + fileName;
                     }
                     catch (Exception ex)
                     {

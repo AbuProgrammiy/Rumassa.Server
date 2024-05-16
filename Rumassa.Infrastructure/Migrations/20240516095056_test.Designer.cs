@@ -13,7 +13,7 @@ using Rumassa.Infrastructure.Persistance;
 namespace Rumassa.Infrastructure.Migrations
 {
     [DbContext(typeof(RumassaDbContext))]
-    [Migration("20240513121732_test")]
+    [Migration("20240516095056_test")]
     partial class test
     {
         /// <inheritdoc />

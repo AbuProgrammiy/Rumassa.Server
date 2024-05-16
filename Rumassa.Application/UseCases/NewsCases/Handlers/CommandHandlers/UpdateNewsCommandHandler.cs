@@ -51,7 +51,7 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
                             await file.CopyToAsync(stream);
                         }
 
-                        news.CardPhotoPath = filePath;
+                        news.CardPhotoPath = "/ProductPhotos/" + fileName;
                     }
                     catch (Exception ex)
                     {

@@ -52,8 +52,9 @@ namespace Rumassa.Application.UseCases.ProductCases.Handlers.CommandHandlers
                             await photoFile.CopyToAsync(stream);
                         }
 
-                        product.PhotoPaths.Add(photoPath); // Add photo path to the list
+                        product.PhotoPaths.Add('/' + request.Name + '/' + photoName); // Add photo path to the list
                     }
+
                 }
                 catch (Exception ex)
                 {

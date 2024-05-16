@@ -73,10 +73,10 @@ namespace Rumassa.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
 
+            app.UseStaticFiles();
 
             app.UseCors();
 

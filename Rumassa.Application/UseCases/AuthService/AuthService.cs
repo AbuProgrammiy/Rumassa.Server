@@ -29,13 +29,16 @@ namespace Rumassa.Application.UseCases.AuthService
             int expirePeriod = int.Parse(_config["JWTSettings:Expire"]!);
 
             List<Claim> claims = new List<Claim>()
-            {
-                new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Iat,EpochTime.GetIntDate(DateTime.UtcNow).ToString(CultureInfo.InvariantCulture),ClaimValueTypes.Integer64),
-                new Claim(ClaimTypes.Name,user.Name!),
-                new Claim(ClaimTypes.Surname,user.Surname!),
-                new Claim(ClaimTypes.Role,user.Role!),
-            };
+                {
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    new Claim(JwtRegisteredClaimNames.Iat, EpochTime.GetIntDate(DateTime.UtcNow).ToString(CultureInfo.InvariantCulture), ClaimValueTypes.Integer64),
+                    new Claim("UserId",user.Id.ToString()),
+                    new Claim(ClaimTypes.Name, user.Name!),
+                    new Claim(ClaimTypes.Surname, user.Surname!),
+                    new Claim(ClaimTypes.Role, user.Role!)
+                };
+
+
 
             JwtSecurityToken token = new JwtSecurityToken(
                 issuer: _config["JWTSettings:ValidIssuer"],

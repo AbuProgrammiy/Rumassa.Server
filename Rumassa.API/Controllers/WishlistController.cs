@@ -31,10 +31,13 @@ namespace Rumassa.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetWishlist(GetAllFromWishlistsQuery query)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetWishlist(Guid id)
         {
-            var result = await mediator.Send(query);
+            var result = await mediator.Send(new GetAllFromWishlistsQuery()
+            {
+                UserId = id
+            });
             return Ok(result);
         }
     }

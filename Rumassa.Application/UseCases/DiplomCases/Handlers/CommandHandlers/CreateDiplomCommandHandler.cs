@@ -59,7 +59,7 @@ namespace Rumassa.Application.UseCases.DiplomCases.Handlers.CommandHandlers
                 var diplom = new Diplom()
                 {
                     Name = request.Name,
-                    PhotoPath = filePath,
+                    PhotoPath = "/DiplomPhotos/" + fileName,
                 };
 
                 await _context.Diploms.AddAsync(diplom, cancellationToken);

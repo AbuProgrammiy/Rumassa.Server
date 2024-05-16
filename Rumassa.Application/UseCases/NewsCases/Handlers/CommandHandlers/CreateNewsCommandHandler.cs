@@ -55,7 +55,7 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
                 var news = new News()
                 {
                     Title = request.Title,
-                    CardPhotoPath = filePath,
+                    CardPhotoPath = "/ProductPhotos/" + fileName,
                     Date = request.Date,
                     Description = request.Description,
                     UserId = request.UserId,
