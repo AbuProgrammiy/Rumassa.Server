@@ -35,14 +35,13 @@ namespace Rumassa.API.Controllers
         {
             var value = _memoryCache.Get("categories");
 
-            if (value == null)
+            if (value is null)
             {
                 var categories = await _mediator.Send(new GetAllCategoriesQuery());
 
-                _memoryCache.Set("categories", categories, new MemoryCacheEntryOptions
+                _memoryCache.Set("categories", categories, new MemoryCacheEntryOptions()
                 {
                     AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(4),
-                    SlidingExpiration = TimeSpan.FromSeconds(5)
                 });
             }
 
@@ -54,17 +53,16 @@ namespace Rumassa.API.Controllers
         {
             var value = _memoryCache.Get($"{id}-category");
 
-            if (value == null)
+            if (value is null)
             {
                 var category = await _mediator.Send(new GetCategoryByIdQuery()
                 {
                     Id = id
                 });
 
-                _memoryCache.Set($"{id}-category", category, new MemoryCacheEntryOptions
+                _memoryCache.Set($"{id}-category", category, new MemoryCacheEntryOptions()
                 {
                     AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(5),
-                    SlidingExpiration = TimeSpan.FromSeconds(5)
                 });
             }
 
@@ -83,10 +81,9 @@ namespace Rumassa.API.Controllers
                 Id = request.Id,
             });
 
-            _memoryCache.Set($"{request.Id}-category", category, new MemoryCacheEntryOptions
+            _memoryCache.Set($"{request.Id}-category", category, new MemoryCacheEntryOptions()
             {
                 AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(5),
-                SlidingExpiration = TimeSpan.FromSeconds(5)
             });
 
             return updatedCategory;
