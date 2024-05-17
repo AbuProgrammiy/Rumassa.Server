@@ -13,8 +13,8 @@ using Rumassa.Infrastructure.Persistance;
 namespace Rumassa.Infrastructure.Migrations
 {
     [DbContext(typeof(RumassaDbContext))]
-    [Migration("20240516095056_test")]
-    partial class test
+    [Migration("20240517035852_memorycache")]
+    partial class memorycache
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
