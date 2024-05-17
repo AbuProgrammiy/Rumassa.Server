@@ -52,25 +52,51 @@ namespace Rumassa.API.Controllers
         [HttpGet]
         public async Task<Category> GetById(short id)
         {
-            var result = await _mediator.Send(new GetCategoryByIdQuery()
-            {
-                Id = id
-            });
+            var value = _memoryCache.Get($"{id}-category");
 
-            return result;
+            if (value == null)
+            {
+                var category = await _mediator.Send(new GetCategoryByIdQuery()
+                {
+                    Id = id
+                });
+
+                _memoryCache.Set($"{id}-category", category, new MemoryCacheEntryOptions
+                {
+                    AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(5),
+                    SlidingExpiration = TimeSpan.FromSeconds(5)
+                });
+            }
+
+            return _memoryCache.Get($"{id}-category") as Category;
         }
 
         [HttpPut]
         public async Task<ResponseModel> Update(UpdateCategoryCommand request)
         {
-            var result = await _mediator.Send(request);
+            _memoryCache.Remove($"{request.Id}-category");
 
-            return result;
+            var updatedCategory = await _mediator.Send(request);
+
+            var category = await _mediator.Send(new GetCategoryByIdQuery()
+            {
+                Id = request.Id,
+            });
+
+            _memoryCache.Set($"{request.Id}-category", category, new MemoryCacheEntryOptions
+            {
+                AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(5),
+                SlidingExpiration = TimeSpan.FromSeconds(5)
+            });
+
+            return updatedCategory;
         }
 
         [HttpDelete]
         public async Task<ResponseModel> Delete(DeleteCategoryCommand request)
         {
+            _memoryCache.Remove($"{request.Id}-category");
+
             var result = await _mediator.Send(request);
 
             return result;
