@@ -28,11 +28,12 @@ namespace Rumassa.API
             // Add services to the container.
             builder.Services.AddApplicationServices();
             builder.Services.AddInfrastructure(builder.Configuration);
-            builder.Services.AddMemoryCache();
 
             builder.Services.AddIdentity<User, IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<RumassaDbContext>()
                 .AddDefaultTokenProviders();
+
+            builder.Services.AddMemoryCache();
 
             builder.Services.AddAuthentication()
                 .AddGoogle(options =>
