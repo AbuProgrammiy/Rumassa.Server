@@ -24,7 +24,7 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
             if (request != null)
             {
                 var file = request.CardPhoto;
-                string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "ProductPhotos");
+                string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "NewsCards");
                 string fileName = "";
 
                 try
@@ -36,7 +36,7 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
                     }
 
                     fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                    filePath = Path.Combine(_webHostEnvironment.WebRootPath, "ProductPhotos", fileName);
+                    filePath = Path.Combine(_webHostEnvironment.WebRootPath, "NewsCards", fileName);
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await file.CopyToAsync(stream);
@@ -55,7 +55,7 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
                 var news = new News()
                 {
                     Title = request.Title,
-                    CardPhotoPath = "/ProductPhotos/" + fileName,
+                    CardPhotoPath = "/NewsCards/" + fileName,
                     Date = request.Date,
                     Description = request.Description,
                     UserId = request.UserId,

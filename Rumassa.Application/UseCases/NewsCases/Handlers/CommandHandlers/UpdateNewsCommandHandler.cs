@@ -33,7 +33,7 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
                     }
 
                     var file = request.CardPhoto;
-                    string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "ProductPhotos");
+                    string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "NewsCards");
                     string fileName = "";
 
                     try
@@ -45,13 +45,13 @@ namespace Rumassa.Application.UseCases.NewsCases.Handlers.CommandHandlers
                         }
 
                         fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                        filePath = Path.Combine(_webHostEnvironment.WebRootPath, "ProductPhotos", fileName);
+                        filePath = Path.Combine(_webHostEnvironment.WebRootPath, "NewsCards", fileName);
                         using (var stream = new FileStream(filePath, FileMode.Create))
                         {
                             await file.CopyToAsync(stream);
                         }
 
-                        news.CardPhotoPath = "/ProductPhotos/" + fileName;
+                        news.CardPhotoPath = "/NewsCards/" + fileName;
                     }
                     catch (Exception ex)
                     {

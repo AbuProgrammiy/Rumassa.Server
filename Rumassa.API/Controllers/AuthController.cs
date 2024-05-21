@@ -144,9 +144,9 @@ namespace Rumassa.API.Controllers
                     Role = "User"
                 };
 
-                var res = await _userManager.CreateAsync(user);
+                await _userManager.CreateAsync(user);
 
-                var result = await _userManager.AddToRoleAsync(user, "User");
+                await _userManager.AddToRoleAsync(user, "User");
             }
 
             var info = new UserLoginInfo(model.Provider, model.ProviderKey, user.UserName);
