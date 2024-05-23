@@ -50,6 +50,17 @@ namespace Rumassa.API.Controllers
             return result;
         }
 
+        [HttpGet]
+        public async Task<List<News>> GetByDate(int size)
+        {
+            var result = await _mediator.Send(new GetNewsByDateQuery()
+            {
+                Size = size
+            });
+
+            return result;
+        }
+
         [HttpPut]
         public async Task<ResponseModel> Update(UpdateNewsCommand request)
         {
