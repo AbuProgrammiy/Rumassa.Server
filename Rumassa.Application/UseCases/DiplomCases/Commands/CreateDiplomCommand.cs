@@ -12,6 +12,6 @@ namespace Rumassa.Application.UseCases.DiplomCases.Commands
     public class CreateDiplomCommand: IRequest<ResponseModel>
     {
         public string Name { get; set; }
-        public FormFile PhotoPath { get; set; }
+        public IFormFile PhotoPath { get; set; }
     }
 }
