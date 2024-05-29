@@ -13,8 +13,8 @@ using Rumassa.Infrastructure.Persistance;
 namespace Rumassa.Infrastructure.Migrations
 {
     [DbContext(typeof(RumassaDbContext))]
-    [Migration("20240517035852_memorycache")]
-    partial class memorycache
+    [Migration("20240529053256_firstProduction")]
+    partial class firstProduction
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -300,10 +300,6 @@ namespace Rumassa.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("TelegramLogin")
                         .IsRequired()
                         .HasColumnType("text");
 

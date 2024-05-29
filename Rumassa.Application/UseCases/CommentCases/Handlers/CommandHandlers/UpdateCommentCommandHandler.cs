@@ -29,7 +29,6 @@ namespace Rumassa.Application.UseCases.CommentCases.Handlers.CommandHandlers
             {
                 comment.Name = request.Name;
                 comment.Email = request.Email;
-                comment.TelegramLogin = request.TelegramLogin;
                 comment.Text = request.Text;
                 comment.UserId = request.UserId;
 

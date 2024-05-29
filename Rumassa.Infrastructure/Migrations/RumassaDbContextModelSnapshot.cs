@@ -300,10 +300,6 @@ namespace Rumassa.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("TelegramLogin")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Text")
                         .IsRequired()
                         .HasColumnType("text");
